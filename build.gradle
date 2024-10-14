@@ -24,12 +24,18 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
 	implementation 'org.jetbrains.kotlin:kotlin-reflect'
+
+	testImplementation 'io.github.serpro69:kotlin-faker:1.15.0'
+
 	runtimeOnly 'org.postgresql:postgresql'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.jetbrains.kotlin:kotlin-test-junit5'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	testImplementation 'io.rest-assured:rest-assured:5.3.0'
+	testImplementation 'io.mockk:mockk:1.13.3'
 }
 
 kotlin {

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import java.util.UUID
 
 @RestController()
 @RequestMapping("/api/users")
@@ -13,14 +14,15 @@ class UserControler(@Autowired private val userRepository: UserRepository) {
 
   @PostMapping
   fun createUser(@RequestBody user: User): ResponseEntity<User> {
+    println("CHEGOU AQUI PAPAI")
     val savedUser = userRepository.save(user)
     return ResponseEntity(savedUser, HttpStatus.CREATED)
   }
 
   @GetMapping("/{id}")
-  fun getUserById(@PathVariable("id") id: Int): ResponseEntity<User> {
+  fun getUserById(@PathVariable("id") id: UUID): ResponseEntity<User> {
     val existingUser = userRepository.findById(id).orElse(null)
-
+println("CHEGOU AQUI PAPAI, $existingUser")
     return if (existingUser != null) {
       ResponseEntity(existingUser, HttpStatus.FOUND)
     } else {
@@ -29,10 +31,8 @@ class UserControler(@Autowired private val userRepository: UserRepository) {
   }
 
   @PatchMapping("/{id}")
-  fun updateUserById(@PathVariable("id") id: Int, @RequestBody user: User): ResponseEntity<User> {
-    val existingUser = userRepository.findById(id).orElse(null)
-
-    if (existingUser == null) return ResponseEntity(HttpStatus.NOT_FOUND)
+  fun updateUserById(@PathVariable("id") id: UUID, @RequestBody user: User): ResponseEntity<User> {
+    val existingUser = userRepository.findById(id).orElse(null) ?: return ResponseEntity(HttpStatus.NOT_FOUND)
 
     val updatedUser = existingUser.copy(name = user.name, email = user.email)
     userRepository.save(updatedUser)
@@ -40,7 +40,7 @@ class UserControler(@Autowired private val userRepository: UserRepository) {
   }
 
   @DeleteMapping("/{id}")
-  fun deleteUserById(@PathVariable("id") id: Int): ResponseEntity<Unit> {
+  fun deleteUserById(@PathVariable("id") id: UUID): ResponseEntity<Unit> {
 
     val existingUser = userRepository.findById(id).orElse(null)
 
