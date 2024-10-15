@@ -14,7 +14,7 @@ class UserControler(@Autowired private val userRepository: UserRepository) {
 
   @PostMapping
   fun createUser(@RequestBody user: User): ResponseEntity<User> {
-    println("CHEGOU AQUI PAPAI")
+
     val savedUser = userRepository.save(user)
     return ResponseEntity(savedUser, HttpStatus.CREATED)
   }
@@ -22,7 +22,7 @@ class UserControler(@Autowired private val userRepository: UserRepository) {
   @GetMapping("/{id}")
   fun getUserById(@PathVariable("id") id: UUID): ResponseEntity<User> {
     val existingUser = userRepository.findById(id).orElse(null)
-println("CHEGOU AQUI PAPAI, $existingUser")
+
     return if (existingUser != null) {
       ResponseEntity(existingUser, HttpStatus.FOUND)
     } else {
@@ -42,9 +42,7 @@ println("CHEGOU AQUI PAPAI, $existingUser")
   @DeleteMapping("/{id}")
   fun deleteUserById(@PathVariable("id") id: UUID): ResponseEntity<Unit> {
 
-    val existingUser = userRepository.findById(id).orElse(null)
-
-    if (existingUser == null) return ResponseEntity(HttpStatus.NOT_FOUND)
+    val existingUser = userRepository.findById(id).orElse(null) ?: return ResponseEntity(HttpStatus.NOT_FOUND)
 
     userRepository.delete(existingUser)
 
