@@ -1,4 +1,4 @@
-package matheus.oliveira.first_app.auth
+package matheus.oliveira.first_app.libs.auth
 
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotBlank

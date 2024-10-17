@@ -1,8 +1,7 @@
-package matheus.oliveira.first_app.auth.util
+package matheus.oliveira.first_app.libs.auth.util
 
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
-import jakarta.persistence.Temporal
 import java.time.Instant
 import java.util.*
 

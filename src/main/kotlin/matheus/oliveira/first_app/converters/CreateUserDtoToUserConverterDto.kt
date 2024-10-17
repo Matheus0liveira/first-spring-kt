@@ -1,7 +1,7 @@
 package matheus.oliveira.first_app.converters
 
-import matheus.oliveira.first_app.users.dto.CreateUserDto
-import matheus.oliveira.first_app.users.entities.User
+import matheus.oliveira.first_app.libs.users.dto.CreateUserDto
+import matheus.oliveira.first_app.libs.users.entities.User
 import org.springframework.core.convert.converter.Converter
 import org.springframework.stereotype.Component
 

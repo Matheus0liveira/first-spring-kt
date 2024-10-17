@@ -1,4 +1,4 @@
-package matheus.oliveira.first_app.users.dto
+package matheus.oliveira.first_app.libs.users.dto
 
 data class ResponseUserDto(
   val name: String,

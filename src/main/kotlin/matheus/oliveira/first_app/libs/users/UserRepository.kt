@@ -1,6 +1,6 @@
-package matheus.oliveira.first_app.users
+package matheus.oliveira.first_app.libs.users
 
-import matheus.oliveira.first_app.users.entities.User
+import matheus.oliveira.first_app.libs.users.entities.User
 import org.springframework.data.jpa.repository.JpaRepository
 import java.util.*
 

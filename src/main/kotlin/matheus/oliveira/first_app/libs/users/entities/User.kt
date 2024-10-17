@@ -1,4 +1,4 @@
-package matheus.oliveira.first_app.users.entities
+package matheus.oliveira.first_app.libs.users.entities
 
 import jakarta.persistence.*
 import java.util.UUID

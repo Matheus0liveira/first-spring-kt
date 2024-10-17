@@ -1,8 +1,8 @@
-package matheus.oliveira.first_app.auth
+package matheus.oliveira.first_app.libs.auth
 
 import jakarta.validation.Valid
-import matheus.oliveira.first_app.auth.dto.ResponseSignInDto
-import matheus.oliveira.first_app.auth.usecase.SignInUseCase
+import matheus.oliveira.first_app.libs.auth.dto.ResponseSignInDto
+import matheus.oliveira.first_app.libs.auth.usecase.SignInUseCase
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
@@ -24,3 +24,8 @@ class AuthController(private val signInUseCase: SignInUseCase) {
   }
 
 }
+
+// TODO: Adicionar filtro para validar o token
+// TODO: Apos verificar se o token é valido adicionar o userId no contexto usando thread local
+// TODO: Olhar a possibilidade de identificar quais as rotas privadas e publicas
+// https://gurselgazii.medium.com/enhancing-spring-boot-rest-apis-with-threadlocal-6c13eb63da8c

@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.server.LocalServerPort
 import org.springframework.test.context.ActiveProfiles
 import io.github.serpro69.kfaker.Faker
-import matheus.oliveira.first_app.users.entities.User
+import matheus.oliveira.first_app.libs.users.entities.User
 import org.hamcrest.Matchers.*
 import org.springframework.http.HttpStatus
 

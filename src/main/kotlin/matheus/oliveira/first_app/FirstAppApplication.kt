@@ -9,6 +9,5 @@ class FirstAppApplication : WebMvcConfigurer
 
 fun main(args: Array<String>) {
   runApplication<FirstAppApplication>(*args)
-
 }
 

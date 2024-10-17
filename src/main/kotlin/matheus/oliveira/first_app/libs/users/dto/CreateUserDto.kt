@@ -1,4 +1,4 @@
-package matheus.oliveira.first_app.users.dto
+package matheus.oliveira.first_app.libs.users.dto
 
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotBlank
@@ -10,9 +10,8 @@ data class CreateUserDto(
   val name: String,
 
   @field:NotBlank
-  @field:Email(message = "Email inválido")
+  @field:Email
   val email: String,
-
 
   @field:NotBlank
   @field:Length(min = 6)
