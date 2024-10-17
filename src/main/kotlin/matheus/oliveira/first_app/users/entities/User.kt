@@ -9,9 +9,14 @@ import java.util.UUID
 data class User(
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
+  @Column(nullable = false)
   val id: UUID = UUID.randomUUID(),
+  @Column(nullable = false)
   val name: String,
-  val email: String
+  @Column(unique = true, nullable = false)
+  val email: String,
+  @Column(nullable = false)
+  val password: String
 )
 
 

@@ -33,4 +33,26 @@ class ExceptionHandler {
       HttpStatus.INTERNAL_SERVER_ERROR
     )
   }
+
+  @ExceptionHandler(EmailNotExistsException::class)
+  fun handleException(ex: EmailNotExistsException): ResponseEntity<Any> {
+    val statusCode = ex.getStatusCode()
+    return ResponseEntity.badRequest().body(
+      ResponseError(
+        status = statusCode,
+        message = ex.message
+      )
+    )
+  }
+
+  @ExceptionHandler(UserExists::class)
+  fun handleException(ex: UserExists): ResponseEntity<Any> {
+    val statusCode = ex.getStatusCode()
+    return ResponseEntity.badRequest().body(
+      ResponseError(
+        status = statusCode,
+        message = ex.message
+      )
+    )
+  }
 }
