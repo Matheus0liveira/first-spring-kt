@@ -55,4 +55,15 @@ class ExceptionHandler {
       )
     )
   }
+
+  @ExceptionHandler(Unauthorized::class)
+  fun handleException(ex: Unauthorized): ResponseEntity<Any> {
+    val statusCode = ex.getStatusCode()
+    return ResponseEntity.badRequest().body(
+      ResponseError(
+        status = statusCode,
+        message = ex.message
+      )
+    )
+  }
 }

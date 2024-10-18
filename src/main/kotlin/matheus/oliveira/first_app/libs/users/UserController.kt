@@ -1,12 +1,11 @@
 package matheus.oliveira.first_app.libs.users
 
-import at.favre.lib.crypto.bcrypt.BCrypt.Hasher
 import jakarta.validation.Valid
-import matheus.oliveira.first_app.exception.UserExists
 import matheus.oliveira.first_app.libs.users.dto.CreateUserDto
 import matheus.oliveira.first_app.libs.users.dto.ResponseUserDto
 import matheus.oliveira.first_app.libs.users.entities.User
 import matheus.oliveira.first_app.libs.users.usecase.CreateUserUseCase
+import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.core.convert.ConversionService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -16,10 +15,17 @@ import java.util.UUID
 @RestController()
 @RequestMapping("/users")
 class UserController(
-  private val userRepository: UserRepository, val createUserUseCase: CreateUserUseCase,
+  private val userRepository: UserRepository,
+  val createUserUseCase: CreateUserUseCase,
+  private val conversionService: ConversionService,
 ) {
   @GetMapping
-  fun getAllUsers(): List<User> = userRepository.findAll().toList()
+  fun getAllUsers(): ResponseEntity<List<ResponseUserDto>> {
+
+    return ResponseEntity(userRepository.findAll().map {
+      conversionService.convert(it, ResponseUserDto::class.java)!!
+    }, HttpStatus.OK)
+  }
 
   @PostMapping
   fun createUser(@Valid @RequestBody createUserDto: CreateUserDto): ResponseEntity<ResponseUserDto> {

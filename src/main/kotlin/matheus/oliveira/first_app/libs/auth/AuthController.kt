@@ -24,8 +24,3 @@ class AuthController(private val signInUseCase: SignInUseCase) {
   }
 
 }
-
-// TODO: Adicionar filtro para validar o token
-// TODO: Apos verificar se o token é valido adicionar o userId no contexto usando thread local
-// TODO: Olhar a possibilidade de identificar quais as rotas privadas e publicas
-// https://gurselgazii.medium.com/enhancing-spring-boot-rest-apis-with-threadlocal-6c13eb63da8c
